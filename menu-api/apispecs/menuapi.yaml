@@ -1,0 +1,45 @@
+openapi: 3.0.1
+info:
+  title: Menu API
+  version: 1.0.0
+paths:
+  /user/signup:
+    post:
+      tags:
+        - user
+      summary: Signup
+      operationId: signup
+      requestBody:
+        description: Signup Object that needs to be added to the User
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupRequest'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            { }
+        400:
+          description: failed operation
+          content:
+            { }
+
+components:
+  schemas:
+    SignupRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        displayName:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+      required:
+        - username
+        - password
+        - email

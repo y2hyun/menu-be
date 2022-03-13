@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: menu-api
+  profiles:
+    include:
+      - jpa
+server:
+  shutdown: graceful
+logging:
+  level:
+    default: INFO
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+    com:
+      yang:
+        menu:
+          menuapi: DEBUG
