@@ -1,3 +1,4 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -7,6 +8,7 @@ plugins {
   kotlin("plugin.spring") version "1.6.10"
   id("org.openapi.generator") version "5.4.0"
   id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+  id("com.github.johnrengelman.shadow")
 }
 
 group = "com.yang.menu"
@@ -70,4 +72,17 @@ tasks.register<org.openapitools.generator.gradle.plugin.tasks.GenerateTask>("ope
 
 tasks.jar {
   enabled = false
+}
+
+tasks {
+  named<ShadowJar>("shadowJar") {
+    mergeServiceFiles()
+    manifest {
+      attributes(mapOf("Main-Class" to "com.yang.menu.menuapi.MenuApiApplicationKt"))
+    }
+  }
+}
+
+apply {
+  from(file("${rootProject.projectDir}/gradle/heroku/stage.gradle"))
 }
