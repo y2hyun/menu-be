@@ -1,4 +1,4 @@
-task stage(dependsOn: ['clean', 'shadowJar'])
+task stage(dependsOn: ['clean', 'bootJar', 'shadowJar'])
 
 task copyToLib(type: Copy) {
   from "$buildDir/libs"
