@@ -2,12 +2,12 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  id("org.springframework.boot") version "2.6.4"
-  id("io.spring.dependency-management") version "1.0.11.RELEASE"
-  kotlin("jvm") version "1.6.10"
-  kotlin("plugin.spring") version "1.6.10"
+  id("org.springframework.boot")
+  id("io.spring.dependency-management")
+  kotlin("jvm")
+  kotlin("plugin.spring")
   id("org.openapi.generator") version "5.4.0"
-  id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+  id("org.jlleitschuh.gradle.ktlint")
   id("com.github.johnrengelman.shadow")
 }
 
@@ -84,5 +84,10 @@ tasks {
 }
 
 apply {
+  from(file("${rootProject.projectDir}/gradle/heroku/clean.gradle"))
   from(file("${rootProject.projectDir}/gradle/heroku/stage.gradle"))
+}
+
+tasks.shadowJar {
+  archiveClassifier.set("")
 }
