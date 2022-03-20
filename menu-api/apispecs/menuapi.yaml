@@ -3,7 +3,7 @@ info:
   title: Menu API
   version: 1.0.0
 paths:
-  /user/signup:
+  /signup:
     post:
       tags:
         - user
@@ -20,14 +20,50 @@ paths:
         200:
           description: successful operation
           content:
-            { }
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonResponse'
         400:
           description: failed operation
           content:
-            { }
-
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonResponse'
+  /login:
+    post:
+      tags:
+        - user
+      summary: Signin
+      operationId: login
+      requestBody:
+        description: Signin
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonResponse'
+        400:
+          description: failed operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonResponse'
 components:
   schemas:
+    CommonResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
     SignupRequest:
       type: object
       properties:
@@ -43,3 +79,13 @@ components:
         - username
         - password
         - email
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password

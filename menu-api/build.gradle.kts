@@ -1,32 +1,12 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
   id("org.springframework.boot")
-  id("io.spring.dependency-management")
-  kotlin("jvm")
-  kotlin("plugin.spring")
   id("org.openapi.generator") version "5.4.0"
-  id("org.jlleitschuh.gradle.ktlint")
   id("com.github.johnrengelman.shadow")
-}
-
-group = "com.yang.menu"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
-
-configurations {
-  compileOnly {
-    extendsFrom(configurations.annotationProcessor.get())
-  }
-}
-
-repositories {
-  mavenCentral()
 }
 
 dependencies {
   implementation(project(":menu-jpa"))
+  implementation(project(":jwtauth"))
   implementation("org.springframework.boot:spring-boot-starter-actuator")
   implementation("org.springframework.boot:spring-boot-starter-web")
   implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -37,17 +17,6 @@ dependencies {
   developmentOnly("org.springframework.boot:spring-boot-devtools")
   annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
-}
-
-tasks.withType<KotlinCompile> {
-  kotlinOptions {
-    freeCompilerArgs = listOf("-Xjsr305=strict")
-    jvmTarget = "11"
-  }
-}
-
-tasks.withType<Test> {
-  useJUnitPlatform()
 }
 
 tasks.register<org.openapitools.generator.gradle.plugin.tasks.GenerateTask>("openapiGenerate") {
@@ -73,7 +42,7 @@ tasks.register<org.openapitools.generator.gradle.plugin.tasks.GenerateTask>("ope
 tasks.jar {
   enabled = false
 }
-
+/*
 tasks {
   named<ShadowJar>("shadowJar") {
     mergeServiceFiles()
@@ -91,3 +60,4 @@ apply {
 tasks.shadowJar {
   archiveClassifier.set("")
 }
+ */

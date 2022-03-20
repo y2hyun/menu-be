@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "jwtauth.no-auth-url-patterns",
+      "type": "java.lang.String[]",
+      "description": "No Authenticate URL Patterns for JWT Authentication.",
+      "defaultValue": ["/**"]
+    }
+  ]
+}

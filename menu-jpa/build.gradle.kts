@@ -1,18 +1,7 @@
 plugins {
   id("org.springframework.boot")
-  id("io.spring.dependency-management")
-  id("org.jlleitschuh.gradle.ktlint")
-  kotlin("jvm")
-  kotlin("plugin.spring")
   kotlin("plugin.jpa")
   kotlin("plugin.allopen")
-}
-
-group = "com.yang.menu"
-version = "0.1"
-
-repositories {
-  mavenCentral()
 }
 
 dependencies {
@@ -35,23 +24,6 @@ allOpen {
       "javax.persistence.Embeddable"
     )
   )
-}
-
-configurations {
-  compileOnly {
-    extendsFrom(configurations.annotationProcessor.get())
-  }
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-  kotlinOptions {
-    freeCompilerArgs = listOf("-Xjsr305=strict")
-    jvmTarget = "11"
-  }
-}
-
-tasks.withType<Test> {
-  useJUnitPlatform()
 }
 
 tasks.bootJar {

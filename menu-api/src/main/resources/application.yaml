@@ -4,6 +4,8 @@ spring:
   profiles:
     include:
       - jpa
+  jackson:
+    default-property-inclusion: non_null
 server:
   shutdown: graceful
 logging:
@@ -24,3 +26,11 @@ logging:
       yang:
         menu:
           menuapi: DEBUG
+
+jwtauth:
+  no-auth-url-patterns:
+    - /signup
+    - /login
+  secret: hogehoge
+  expire-ms: 1800000
+  issuer: y2hyun

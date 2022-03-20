@@ -1,2 +1,5 @@
-src/main/kotlin/com/yang/menu/menuapi/web/api/UserApi.kt
+src/main/kotlin/com/yang/menu/menuapi/web/api/LoginApi.kt
+src/main/kotlin/com/yang/menu/menuapi/web/api/SignupApi.kt
+src/main/kotlin/com/yang/menu/menuapi/web/payload/CommonResponse.kt
+src/main/kotlin/com/yang/menu/menuapi/web/payload/LoginRequest.kt
 src/main/kotlin/com/yang/menu/menuapi/web/payload/SignupRequest.kt
